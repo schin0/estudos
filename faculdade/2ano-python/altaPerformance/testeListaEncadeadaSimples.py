@@ -1,5 +1,4 @@
 from listaEncadeadaSimples import *
-from listaDuplamenteEncadeada import *
 
 nodo = Nodo(1)
 
@@ -16,4 +15,7 @@ listaSimples.excluirPorValor(4)
 
 listaSimples.imprimirLista()
 
-print(listaSimples.verificarListaVazia())
+print("========")
+
+print(listaSimples.existeValor(1))
+print(listaSimples.existeValor(10))

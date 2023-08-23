@@ -33,8 +33,21 @@ class ListaEncadeadaSimples:
 
     # Exercícios:
     # 1: Construa um método para verificar se existe um valor na lista encadeada.
-    def verificarListaVazia(self):
-        return self.cabeca is None
+    def existeValor(self, valor):
+        nodo = self.buscar(valor)
+
+        return nodo is not None
+
+    def buscar(self, valor):
+        nodo = self.cabeca
+
+        while nodo is not None:
+            if nodo.valor == valor:
+                return nodo
+
+            nodo = nodo.proximo
+
+        return None
 
     # 2:  Faça o método de remover um elemento da lista.
     def excluirPorValor(self, valor):
