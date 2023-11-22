@@ -1,4 +1,5 @@
-import { Observable, from } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
 
 let numbers = [1, 2, 3];
 
@@ -17,7 +18,10 @@ let sourceInstance = new Observable(subscriber => {
     };
 
     produceValue();
-})
+    // Pipe chamando depois do subscribe
+}).pipe(
+    map((n: number) => n + 3)
+)
 
 class myObserver {
     next(x: number) {
@@ -35,4 +39,12 @@ class myObserver {
     }
 };
 
-sourceInstance.subscribe(new myObserver());
+// Pipe chamando antes do subscribe c/ map
+sourceInstance.pipe(
+    map((n: number) => n + 10)
+).subscribe(new myObserver());
+
+// Pipe chamando antes do subscribe c/ filter
+sourceInstance.pipe(
+    filter((n: number) => n > 2)
+).subscribe(new myObserver());
