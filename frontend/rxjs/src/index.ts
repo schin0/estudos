@@ -1,2 +1,2 @@
-import { fromEvent } from 'rxjs';
-import { map, filter, delay } from 'rxjs/operators';
+import { Observable, fromEvent } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
