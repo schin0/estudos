@@ -1,15 +1,31 @@
-<mat-toolbar>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>My App</span>
-  <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>share</mat-icon>
-  </button>
-</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav class="sidenav" #sidenav [fixedInViewport]="true" [opened]="!isSmallScreen"
+    [mode]="sidenavMode"></mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar #toolbarMenu class="toolbar-menu" color="primary" >
+      <button mat-icon-button class="example-icon" (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>My App</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <mat-toolbar #toolbarSubmenu class="toolbar-submenu" id="toolbarSubmenu" color="primary">
+      <span>My App</span>
+    </mat-toolbar>
+
+    <h1 class="title">Title</h1>
+    <h1 class="title">Title</h1>
+    <h1 class="title">Title</h1>
+    <h1 class="title">Title</h1>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
 <router-outlet></router-outlet>

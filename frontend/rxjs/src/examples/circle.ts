@@ -18,7 +18,6 @@ let source = fromEvent(document, 'mousemove').pipe(
 function onNext(value: mouseTrack) {
     circle.style.left = `${value.x}px`;
     circle.style.top = `${value.y}px`;
-
 }
 
 source.subscribe({
