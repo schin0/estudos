@@ -1,11 +1,9 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { fromEvent } from 'rxjs';
+import { distinctUntilChanged, map } from 'rxjs/operators';
 import { MatSidenav } from '@angular/material/sidenav';
-import { pluck, fromEvent } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { MatToolbar } from '@angular/material/toolbar';
 
-export const SCROLL_CONTAINER = 'mat-sidenav-content';
 export const TEXT_LIMIT = 50;
 export const SHADOW_LIMIT = 100;
 
@@ -17,22 +15,42 @@ export const SHADOW_LIMIT = 100;
 export class AppComponent implements OnInit {
   title = 'project-angular-material';
   public isSmallScreen = false;
+  public isSidenavOpen = false;
+  public popText = false;
+  public applyShadow = false;
+  public scrollTop = 0;
+
+  @ViewChild('sidenav') sidenav: MatSidenav | undefined;
 
   constructor(private breakpointObserver: BreakpointObserver) { }
 
   ngOnInit(): void {
-    const container = document.getElementsByClassName(SCROLL_CONTAINER)[0];
+    fromEvent(window, 'scroll')
+      .pipe(
+        map(() => {
+          return window.pageYOffset || document.documentElement.scrollTop;
+        }),
+        distinctUntilChanged()
+      )
+      .subscribe((scrollTop) => {
+        this.determineHeader(scrollTop);
+      });
+  }
 
-    fromEvent(container, 'scroll').subscribe({
-      next: (value) => console.log(value)
-    })
+  determineHeader(top: number) {
+    this.popText = top > TEXT_LIMIT;
+    this.applyShadow = top > SHADOW_LIMIT;
+  }
+
+  toggleSidenav() {
+    this.isSidenavOpen = !this.isSidenavOpen;
+    this.sidenav?.toggle();
   }
 
   // Uso direto
   ngAfterContentInit(): void {
     this.breakpointObserver.observe(['(max-width: 880px)'])
       .subscribe((res) => this.isSmallScreen = res.matches);
-
   }
 
   // Uso com operator pluck do rxjs -> analisa se o match existe
@@ -41,7 +59,6 @@ export class AppComponent implements OnInit {
   //     .pipe(pluck('matches'))
   //     .subscribe((res: boolean) => this.isSmallScreen = res);
   // }
-
 
   get sidenavMode() {
     return this.isSmallScreen ? 'over' : 'side';
