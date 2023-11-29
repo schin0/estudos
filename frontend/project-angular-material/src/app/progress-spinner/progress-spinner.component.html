@@ -1,0 +1,12 @@
+<h1>Progress bar & Spinner</h1>
+
+<mat-progress-bar color="primary" [value]="loadingPercent"></mat-progress-bar>
+<br>
+<mat-progress-bar color="accent" [value]="loadingPercent"></mat-progress-bar>
+<br>
+<mat-progress-bar color="warn" [value]="loadingPercent"></mat-progress-bar>
+
+<br><br>
+
+<h1>Loading Desafio</h1>
+<mat-progress-bar #progress color="warn" mode="query" [value]="loadingPercentQuery"></mat-progress-bar>
