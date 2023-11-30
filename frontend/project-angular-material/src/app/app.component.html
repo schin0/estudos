@@ -1,12 +1,16 @@
 <mat-sidenav-container>
-  <mat-sidenav class="sidenav" #sidenav [fixedInViewport]="true" [opened]="!isSmallScreen"
-    [mode]="sidenavMode"></mat-sidenav>
+  <mat-sidenav class="sidenav" #sidenav [fixedInViewport]="true" [opened]="!isSmallScreen" [mode]="sidenavMode">
+    <mat-toolbar color="primary">
+      Examples
+    </mat-toolbar>
+    <mat-nav-list>
+      <a routerLink="/formFieldInput" mat-list-item>Form Field Input</a>
+      <a routerLink="/progressSpiner" mat-list-item>Progress Bar & Spinner</a>
+    </mat-nav-list>
+  </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-toolbar 
-      class="toolbar-menu" 
-      [class.mat-elevation-z4]="applyShadow"
-      color="primary">
+    <mat-toolbar class="toolbar-menu" [class.mat-elevation-z4]="applyShadow" color="primary">
       <button mat-icon-button class="example-icon" (click)="toggleSidenav()">
         <mat-icon *ngIf="isSidenavOpen">menu</mat-icon>
         <mat-icon *ngIf="!isSidenavOpen">menu_open</mat-icon>
@@ -25,11 +29,6 @@
       <span *ngIf="!popText">My App</span>
     </mat-toolbar>
 
-    <h1 class="title">Title</h1>
-    <h1 class="title">Title</h1>
-    <h1 class="title">Title</h1>
-    <h1 class="title">Title</h1>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-<router-outlet></router-outlet>
