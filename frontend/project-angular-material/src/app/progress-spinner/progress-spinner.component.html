@@ -10,3 +10,8 @@
 
 <h1>Loading Desafio</h1>
 <mat-progress-bar #progress color="warn" mode="query" [value]="loadingPercentQuery"></mat-progress-bar>
+
+<br><br>
+
+<h1>Playback Desafio</h1>
+<mat-progress-bar color="primary" mode="buffer" [bufferValue]="currentPlayback" [value]="loadingPercent"></mat-progress-bar>
