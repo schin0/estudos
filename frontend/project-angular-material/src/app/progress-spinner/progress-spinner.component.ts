@@ -15,6 +15,7 @@ interface optionsLoading {
 })
 export class ProgressSpinnerComponent implements OnInit {
   public loadingPercent: number = 0;
+  public currentPlayback: number = 0;
   public loadingPercentQuery: number = 0;
 
   @ViewChild('progress') progress: MatProgressBar | undefined;
@@ -23,6 +24,12 @@ export class ProgressSpinnerComponent implements OnInit {
     this.loadingProgress({ speed: 500 }).subscribe(
       (value: number) => {
         this.loadingPercent = value;
+      }
+    );
+
+    this.loadingProgress({ speed: 350 }).subscribe(
+      (value: number) => {
+        this.currentPlayback = value;
       }
     );
 
