@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarMessageComponent } from './snackbar-message/snackbar-message.component';
 
 @Component({
   selector: 'app-sncackbar',
@@ -21,6 +22,14 @@ export class SncackbarComponent {
 
     snackbar.onAction().subscribe(() => {
       console.log('Snackbar fechado pelo botão Fechar!');
+    })
+  }
+
+  public openSnackbarFromComponent() {
+    this.snackBar.openFromComponent(SnackbarMessageComponent, {
+      horizontalPosition: 'end',
+      verticalPosition: 'top',
+      data: 'Content from component'
     })
   }
 
