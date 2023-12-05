@@ -14,6 +14,7 @@ import { SncackbarComponent } from './sncackbar/sncackbar.component';
 import { SnackbarMessageComponent } from './sncackbar/snackbar-message/snackbar-message.component';
 import { DialogModalComponent } from './dialog/dialog-modal/dialog-modal.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { DatatableComponent } from './datatable/datatable.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DialogComponent } from './dialog/dialog.component';
     SncackbarComponent,
     SnackbarMessageComponent,
     DialogModalComponent,
-    DialogComponent
+    DialogComponent,
+    DatatableComponent
   ],
   imports: [
     BrowserModule,

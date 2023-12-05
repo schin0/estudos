@@ -7,6 +7,7 @@ import { TabsComponent } from './tabs/tabs.component';
 import { DatepickerComponent } from './datepicker/datepicker.component';
 import { SncackbarComponent } from './sncackbar/sncackbar.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { DatatableComponent } from './datatable/datatable.component';
 
 const routes: Routes = [
   { path: 'formFieldInput', component: FormFieldInputComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'datepicker', component: DatepickerComponent },
   { path: 'snackbar', component: SncackbarComponent },
   { path: 'dialog', component: DialogComponent},
+  { path: 'datatable', component: DatatableComponent},
 ];
 
 @NgModule({
