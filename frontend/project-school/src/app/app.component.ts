@@ -9,7 +9,7 @@ export const SHADOW_LIMIT = 100;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styles: []
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   title = 'project-school';

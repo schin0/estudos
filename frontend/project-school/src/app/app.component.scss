@@ -1,0 +1,39 @@
+.sidenav {
+    width: 250px;
+}
+
+.title {
+    margin-bottom: 500px;
+}
+
+.toolbar-menu {
+    position: fixed;
+    font-size: 1rem;
+    top: 0;
+}
+
+.toolbar-submenu {
+    height: 100px;
+    font-size: 2rem;
+    margin-top: 60px;
+}
+
+.mat-elevation-z4 {
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(255, 255, 255, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+mat-toolbar {
+    z-index: 999;
+}
+
+mat-sidenav-container {
+    position: fixed;
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+    min-width: 100%;
+}
+
+.content {
+    padding: 10px;
+}
