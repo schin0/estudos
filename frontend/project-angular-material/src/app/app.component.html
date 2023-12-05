@@ -10,6 +10,7 @@
       <a routerLink="/datepicker" mat-list-item>Datepicker</a>
       <a routerLink="/snackbar" mat-list-item>Snackbar</a>
       <a routerLink="/dialog" mat-list-item>Dialog</a>
+      <a routerLink="/datatable" mat-list-item>Datatable</a>
     </mat-nav-list>
   </mat-sidenav>
 
@@ -33,6 +34,8 @@
       <span *ngIf="!popText">My App</span>
     </mat-toolbar>
 
-    <router-outlet></router-outlet>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
