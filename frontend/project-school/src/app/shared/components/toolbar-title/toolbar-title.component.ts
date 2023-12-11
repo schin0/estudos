@@ -7,6 +7,15 @@ import { Component, Input } from '@angular/core';
 })
 export class ToolbarTitleComponent {
   @Input() title: string = '';
-  @Input() icon: string = '';
+  iconFa = '';
+  iconMat = '';
+
+  @Input()
+  set icon(value: string) {
+    value.includes('fa-') ?
+      this.iconFa = `icon-space-mat ${value}` :
+      this.iconMat = value;
+
+  };
 
 }
