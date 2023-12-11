@@ -5,6 +5,11 @@
     </mat-toolbar>
     <mat-nav-list>
       <a routerLink="/users" mat-list-item>Users</a>
+      <a *ngFor="let item of items_menu" [routerLink]="item.link" mat-list-item routerLinkActive="active">
+        <mat-icon [fontIcon]="item.icon" fontSet="fa"></mat-icon>
+        <span>{{item.label}}</span>
+      </a>
+
     </mat-nav-list>
   </mat-sidenav>
 
