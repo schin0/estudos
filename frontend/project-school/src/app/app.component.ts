@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { fromEvent, map, distinctUntilChanged } from 'rxjs';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { menuItems } from './shared/models/menu';
 
 export const TEXT_LIMIT = 50;
 export const SHADOW_LIMIT = 100;
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit {
   public popText = false;
   public applyShadow = false;
   public scrollTop = 0;
+  public items_menu = menuItems;
 
   @ViewChild('sidenav') sidenav: MatSidenav | undefined;
 
