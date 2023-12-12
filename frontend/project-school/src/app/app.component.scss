@@ -1,11 +1,3 @@
-.sidenav {
-    width: 250px;
-}
-
-.title {
-    margin-bottom: 500px;
-}
-
 .toolbar-menu {
     position: fixed;
     font-size: 1rem;
@@ -13,9 +5,22 @@
 }
 
 .toolbar-submenu {
-    height: 100px;
+    height: 205px;
     font-size: 2rem;
-    margin-top: 60px;
+    margin-top: 0;
+    padding: 60px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    background-color: #575757;
+
+    &-top {
+        height: 40px;
+    }
+    
+    &-title {
+        margin: 30px 32px;
+    }
 }
 
 .mat-elevation-z4 {
@@ -88,7 +93,8 @@ mat-sidenav-container {
             margin-bottom: 4px;
             font-size: 0.9rem;
 
-            &:hover, &.active {
+            &:hover,
+            &.active {
                 background-color: #e6e6e6;
             }
         }
