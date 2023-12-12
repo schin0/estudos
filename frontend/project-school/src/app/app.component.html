@@ -19,9 +19,10 @@
 
   <mat-sidenav-content>
     <mat-toolbar class="toolbar-menu" [class.mat-elevation-z4]="applyShadow" color="primary">
-      <button mat-icon-button class="example-icon" (click)="toggleSidenav()">
+      <button mat-icon-button class="example-icon" (click)="toggleSidenav()" 
+              matTooltip="{{!isSidenavOpen ? 'Fechar menu' : 'Abrir menu'}}" matTooltipPosition="right">
         <mat-icon *ngIf="isSidenavOpen">menu</mat-icon>
-        <mat-icon *ngIf="!isSidenavOpen">menu_open</mat-icon>
+        <mat-icon *ngIf="!isSidenavOpen">close</mat-icon>
       </button>
       <span *ngIf="popText">My App</span>
       <span class="example-spacer"></span>
