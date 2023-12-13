@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { fromEvent, map, distinctUntilChanged, filter } from 'rxjs';
+import { fromEvent, map, distinctUntilChanged, filter, debounceTime } from 'rxjs';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { menuItems } from './shared/models/menu';
 import { NavigationEnd, Router } from '@angular/router';
@@ -37,7 +37,8 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     fromEvent(window, 'scroll')
       .pipe(
-        map(() => window.pageYOffset || document.documentElement.scrollTop),
+        debounceTime(100),
+        map(() => window.scrollY || document.documentElement.scrollTop),
         distinctUntilChanged()
       )
       .subscribe((scrollTop) => {

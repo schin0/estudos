@@ -11,10 +11,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
         FlexLayoutModule
     ],
     declarations: [
-        ToolbarTitleComponent
+        ToolbarTitleComponent,
     ],
     exports: [
-        ToolbarTitleComponent
+        ToolbarTitleComponent,
     ]
 })
 export class SharedModule { }

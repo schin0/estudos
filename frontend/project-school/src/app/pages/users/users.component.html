@@ -4,7 +4,7 @@
             <mat-icon>share</mat-icon>
         </button>
     </app-toolbar-title>
-    <nav mat-tab-nav-bar ngClass="tabs">
+    <nav mat-tab-nav-bar ngClass="tabs" [tabPanel]="tabPanel">
         <a mat-tab-link routerLink="/users/myProfile" routerLinkActive="active-link">
             <mat-icon>person</mat-icon>
             Profile
@@ -19,7 +19,7 @@
         </a>
     </nav>
 
-    <div class="container">
+    <div class="container" #tabPanel>
         <router-outlet></router-outlet>
     </div>
 </div>
