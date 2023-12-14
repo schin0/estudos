@@ -1,10 +1,10 @@
 <mat-toolbar class="toolbar-menu" [class.mat-elevation-z4]="applyShadow" color="secondary">
-    <mat-toolbar-row>
+    <div>
         <a href="dashboard" mat-button class="logo">
             <mat-icon fontSet="fa" fontIcon="fa-school"> </mat-icon>
             <span *ngIf="popText">{{menuName}}</span>
         </a>
-    </mat-toolbar-row>
+    </div>
     <div class="content-center">
         <button mat-button [matMenuTriggerFor]="beforeMenu">
             <span>Menu</span>

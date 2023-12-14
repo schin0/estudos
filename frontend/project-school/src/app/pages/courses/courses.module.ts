@@ -6,6 +6,8 @@ import { CoursesComponent } from './courses.component';
 import { CoursesMaterialModule } from '@app/shared/materials/courses-mat.module';
 import { SharedModule } from '@app/shared/shared.module';
 import { CourseListComponent } from './course-list/course-list.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { CourseListComponent } from './course-list/course-list.component';
     CommonModule,
     CoursesRoutingModule,
     CoursesMaterialModule,
-    SharedModule
+    SharedModule,
+    MatCardModule,
+    MatDividerModule
   ]
 })
 export class CoursesModule { }
