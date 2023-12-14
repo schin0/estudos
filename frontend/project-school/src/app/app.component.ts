@@ -3,7 +3,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { fromEvent, map, distinctUntilChanged, filter, debounceTime } from 'rxjs';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { menuItems } from './shared/models/menu';
-import { NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 
 export const TEXT_LIMIT = 50;
 export const SHADOW_LIMIT = 100;
@@ -26,13 +26,11 @@ export class AppComponent implements OnInit {
 
   @ViewChild('sidenav') sidenav: MatSidenav | undefined;
 
-  private breakpointObserver: BreakpointObserver
-  private route: Router
+  private breakpointObserver = inject(BreakpointObserver);
+  private route = inject(Router);
+  private activatedRoute = inject(ActivatedRoute);
 
-  constructor() {
-    this.breakpointObserver = inject(BreakpointObserver);
-    this.route = inject(Router);
-  }
+  constructor() { }
 
   ngOnInit(): void {
     fromEvent(window, 'scroll')
@@ -47,9 +45,8 @@ export class AppComponent implements OnInit {
 
     this.route.events.pipe(
       filter((event) => event instanceof NavigationEnd),
-      map((event) => event as NavigationEnd)
-    ).subscribe((event: NavigationEnd) => {
-      this.menuName = this.items_menu.find((item) => item.link === event.url)?.label || '';
+    ).subscribe(() => {
+      this.menuName = this.activatedRoute.firstChild?.snapshot.routeConfig?.path || '';
     });
   }
 
