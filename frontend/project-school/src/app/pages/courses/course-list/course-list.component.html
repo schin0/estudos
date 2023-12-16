@@ -14,18 +14,14 @@
                 <mat-icon matSuffix>search</mat-icon>
             </button>
         </mat-form-field>
-        <mat-paginator fxFlex="26" fxFlex.xs="100" fxFlex.sm="26" 
-            [length]="totalCount" 
-            [pageSize]="pageSize"
-            [pageSizeOptions]="[5, 10, 25, 100]"
-            itemsPerPageLabel=""
-            (page)="handlePageEvent($event)">            
+        <mat-paginator fxFlex="26" fxFlex.xs="100" fxFlex.sm="26" [length]="totalCount" [pageSize]="pageSize"
+            [pageSizeOptions]="[5, 10, 25, 100]" itemsPerPageLabel="" (page)="handlePageEvent($event)">
         </mat-paginator>
 
     </div>
 </form>
-
-<div fxLayout="row wrap" fxLayoutGap="16px grid">
+<!-- Vantagem de usar pipe async com tap: não precisa se inscrever e desinscrever do observable -->
+<div fxLayout="row wrap" fxLayoutGap="16px grid" *ngIf="courseData | async; else loading">
     <div fxFlex="20" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="33" fxFlex.lg="25" *ngFor="let course of courseList">
         <mat-card class="mat-elevation-z4">
             <img mat-card-image src="{{course.image}}" alt="Photo of a Shiba Inu">
@@ -51,4 +47,22 @@
             </mat-card-actions>
         </mat-card>
     </div>
+    <div fxFlex="100" *ngIf="!courseList.length">
+        <br>
+        <p>
+            Nenhum curso encontrado para o filtro:
+        </p>
+        <p *ngIf="f.category.value">
+            <strong>Categoria: </strong>{{f.category.value}}
+        </p>
+        <p>
+            <strong>Filtro: </strong>{{f.search.value}}
+        </p>
+    </div>
 </div>
+
+
+
+<ng-template #loading>
+    <mat-progress-bar color="primary" mode="indeterminate"></mat-progress-bar>
+</ng-template>
