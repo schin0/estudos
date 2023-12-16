@@ -14,11 +14,11 @@ export class CoursesService {
   public get(currentPage: number, pageSize: number, category: string, search: string): Observable<HttpResponse<any>> {
     let url = `${this.coursesUrl}?_page=${currentPage}&_limit=${pageSize}`
 
-    if (category)
-      url += `&q=${category}`;
+    if(category)
+      url = `${url}&category=${category}`
 
-    if (search)
-      url += `&q=${search}`;
+    if(search)
+      url = `${url}&q=${search}`
 
     return this.http.get<Course[]>(url, { observe: 'response' })
       .pipe(

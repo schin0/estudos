@@ -14,12 +14,8 @@
                 <mat-icon matSuffix>search</mat-icon>
             </button>
         </mat-form-field>
-        <mat-paginator fxFlex="26" fxFlex.xs="100" fxFlex.sm="26" 
-            [length]="totalCount" 
-            [pageSize]="pageSize"
-            [pageSizeOptions]="[5, 10, 25, 100]"
-            itemsPerPageLabel=""
-            (page)="handlePageEvent($event)">            
+        <mat-paginator fxFlex="26" fxFlex.xs="100" fxFlex.sm="26" [length]="totalCount" [pageSize]="pageSize"
+            [pageSizeOptions]="[5, 10, 25, 100]" itemsPerPageLabel="" (page)="handlePageEvent($event)">
         </mat-paginator>
 
     </div>
@@ -51,8 +47,22 @@
             </mat-card-actions>
         </mat-card>
     </div>
+    <div fxFlex="100" *ngIf="!courseList.length">
+        <br>
+        <p>
+            Nenhum curso encontrado para o filtro:
+        </p>
+        <p *ngIf="f.category.value">
+            <strong>Categoria: </strong>{{f.category.value}}
+        </p>
+        <p>
+            <strong>Filtro: </strong>{{f.search.value}}
+        </p>
+    </div>
 </div>
 
-<ng-template #loading> 
+
+
+<ng-template #loading>
     <mat-progress-bar color="primary" mode="indeterminate"></mat-progress-bar>
 </ng-template>
