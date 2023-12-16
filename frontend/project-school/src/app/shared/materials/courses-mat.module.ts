@@ -5,6 +5,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
@@ -17,7 +18,8 @@ import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginato
     MatCardModule,
     MatDividerModule,
     MatInputModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatProgressSpinnerModule
   ],
   declarations: [],
   providers: [

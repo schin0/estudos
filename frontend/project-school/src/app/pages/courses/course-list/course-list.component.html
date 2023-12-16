@@ -24,8 +24,8 @@
 
     </div>
 </form>
-
-<div fxLayout="row wrap" fxLayoutGap="16px grid">
+<!-- Vantagem de usar pipe async com tap: não precisa se inscrever e desinscrever do observable -->
+<div fxLayout="row wrap" fxLayoutGap="16px grid" *ngIf="courseData | async; else loading">
     <div fxFlex="20" fxFlex.xs="100" fxFlex.sm="50" fxFlex.md="33" fxFlex.lg="25" *ngFor="let course of courseList">
         <mat-card class="mat-elevation-z4">
             <img mat-card-image src="{{course.image}}" alt="Photo of a Shiba Inu">
@@ -52,3 +52,7 @@
         </mat-card>
     </div>
 </div>
+
+<ng-template #loading> 
+    <mat-spinner color="primary"></mat-spinner>
+</ng-template>
