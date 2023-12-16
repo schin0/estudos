@@ -5,7 +5,8 @@ import { Category } from "./../../../shared/models/category-enum";
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
 import { HttpResponse } from '@angular/common/http';
-import { Observable, Subscription, debounceTime, tap } from 'rxjs';
+import { EMPTY, Observable, Subscription, catchError, debounceTime, tap } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-course-list',
@@ -17,6 +18,7 @@ export class CourseListComponent implements OnInit {
   public courseService = inject(CoursesService);
   public categoryList: string[] = Object.values(Category) as string[];
   private fb = inject(FormBuilder);
+  private snackbar = inject(MatSnackBar);
   public form!: FormGroup;
   public courseData!: Observable<any>;
   // Maneira de se inscrever e desinscrever de um observable (subscribe/unsubscribe)
@@ -50,11 +52,19 @@ export class CourseListComponent implements OnInit {
     // Vantagem de usar pipe async com tap: não precisa se inscrever e desinscrever do observable
     this.courseData = this.courseService
       .get(currentPage, pageSize, category, search)
-      .pipe(tap((response: HttpResponse<any>) => {
-        this.courseList = response.body as Course[];
-        let totalCount = response.headers.get('X-Total-Count');
-        this.totalCount = totalCount ? Number(totalCount) : 0;
-      }));
+      .pipe(
+        tap((response: HttpResponse<any>) => {
+          this.courseList = response.body as Course[];
+          let totalCount = response.headers.get('X-Total-Count');
+          this.totalCount = totalCount ? Number(totalCount) : 0;
+        }),
+        catchError((err: string) => {
+          this.snackbar.open(err, 'Fechar', {
+            duration: 3000
+          });
+          return EMPTY;
+        })
+      );
 
 
     // Maneira de se inscrever e desinscrever de um observable (subscribe/unsubscribe)
