@@ -1,0 +1,15 @@
+C:\Users\gasch02\OneDrive - Fagron\Desktop\pessoal\estudos\backend\algoritmo-round-robin\RoundRobin\RoundRobin\bin\Debug\net7.0\RoundRobin.exe
+C:\Users\gasch02\OneDrive - Fagron\Desktop\pessoal\estudos\backend\algoritmo-round-robin\RoundRobin\RoundRobin\bin\Debug\net7.0\RoundRobin.deps.json
+C:\Users\gasch02\OneDrive - Fagron\Desktop\pessoal\estudos\backend\algoritmo-round-robin\RoundRobin\RoundRobin\bin\Debug\net7.0\RoundRobin.runtimeconfig.json
+C:\Users\gasch02\OneDrive - Fagron\Desktop\pessoal\estudos\backend\algoritmo-round-robin\RoundRobin\RoundRobin\bin\Debug\net7.0\RoundRobin.dll
+C:\Users\gasch02\OneDrive - Fagron\Desktop\pessoal\estudos\backend\algoritmo-round-robin\RoundRobin\RoundRobin\bin\Debug\net7.0\RoundRobin.pdb
+C:\Users\gasch02\OneDrive - Fagron\Desktop\pessoal\estudos\backend\algoritmo-round-robin\RoundRobin\RoundRobin\obj\Debug\net7.0\RoundRobin.csproj.AssemblyReference.cache
+C:\Users\gasch02\OneDrive - Fagron\Desktop\pessoal\estudos\backend\algoritmo-round-robin\RoundRobin\RoundRobin\obj\Debug\net7.0\RoundRobin.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gasch02\OneDrive - Fagron\Desktop\pessoal\estudos\backend\algoritmo-round-robin\RoundRobin\RoundRobin\obj\Debug\net7.0\RoundRobin.AssemblyInfoInputs.cache
+C:\Users\gasch02\OneDrive - Fagron\Desktop\pessoal\estudos\backend\algoritmo-round-robin\RoundRobin\RoundRobin\obj\Debug\net7.0\RoundRobin.AssemblyInfo.cs
+C:\Users\gasch02\OneDrive - Fagron\Desktop\pessoal\estudos\backend\algoritmo-round-robin\RoundRobin\RoundRobin\obj\Debug\net7.0\RoundRobin.csproj.CoreCompileInputs.cache
+C:\Users\gasch02\OneDrive - Fagron\Desktop\pessoal\estudos\backend\algoritmo-round-robin\RoundRobin\RoundRobin\obj\Debug\net7.0\RoundRobin.dll
+C:\Users\gasch02\OneDrive - Fagron\Desktop\pessoal\estudos\backend\algoritmo-round-robin\RoundRobin\RoundRobin\obj\Debug\net7.0\refint\RoundRobin.dll
+C:\Users\gasch02\OneDrive - Fagron\Desktop\pessoal\estudos\backend\algoritmo-round-robin\RoundRobin\RoundRobin\obj\Debug\net7.0\RoundRobin.pdb
+C:\Users\gasch02\OneDrive - Fagron\Desktop\pessoal\estudos\backend\algoritmo-round-robin\RoundRobin\RoundRobin\obj\Debug\net7.0\RoundRobin.genruntimeconfig.cache
+C:\Users\gasch02\OneDrive - Fagron\Desktop\pessoal\estudos\backend\algoritmo-round-robin\RoundRobin\RoundRobin\obj\Debug\net7.0\ref\RoundRobin.dll
