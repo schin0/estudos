@@ -1,6 +1,8 @@
+import model.Pessoa
+
 // Comentários são assim
 
-enum class TipoCalculo {
+private enum class TipoCalculo {
     Adicao,
     Subtracao,
     Multiplicacao,
@@ -8,6 +10,14 @@ enum class TipoCalculo {
 }
 
 fun main() {
+    // processarFundamentos();
+
+    val pessoa = Pessoa("Gabriel", 20, 70.0, 175.0);
+
+    pessoa.exibirDados();
+}
+
+fun processarFundamentos() {
     exemplificar();
     processarVariaveisEConstantes();
 
