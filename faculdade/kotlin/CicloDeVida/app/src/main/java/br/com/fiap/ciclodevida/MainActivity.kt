@@ -1,5 +1,7 @@
 package br.com.fiap.ciclodevida
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -31,6 +33,32 @@ class MainActivity : ComponentActivity() {
             val nome: String = edtNome.editableText.toString();
 
             txvResultado.text = nome;
+        }
+
+        val btnAbrirSite = findViewById<Button>(R.id.btn_abrir_site);
+        val btnAbrirProximaActivity = findViewById<Button>(R.id.btn_abrir_proxima_activity);
+
+        // Chamada implícita
+        btnAbrirSite.setOnClickListener {
+            val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.fiap.com.br"));
+            startActivity(i);
+        }
+
+        // Chamada explícita
+        btnAbrirProximaActivity.setOnClickListener {
+            val i = Intent(this, ProximaActivity::class.java);
+            startActivity(i);
+        }
+
+        // Compartilhar conteúdo:
+        val btnCompartilhar = findViewById<Button>(R.id.btn_compartilhar);
+
+        btnCompartilhar.setOnClickListener{
+            val i = Intent();
+            i.action = Intent.ACTION_SEND;
+            i.putExtra(Intent.EXTRA_TEXT, "Texto ou URL a ser compartilhada");
+            i.type = "text/plain";
+            startActivity(i);
         }
     }
 
