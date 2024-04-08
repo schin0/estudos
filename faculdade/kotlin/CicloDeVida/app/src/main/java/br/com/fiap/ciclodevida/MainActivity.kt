@@ -60,6 +60,13 @@ class MainActivity : ComponentActivity() {
             i.type = "text/plain";
             startActivity(i);
         }
+
+        val btnAbrirLayout = findViewById<Button>(R.id.btn_abrir_layout);
+
+        btnAbrirLayout.setOnClickListener {
+            val i = Intent(this, Layouts::class.java);
+            startActivity(i);
+        }
     }
 
     fun preencherTexto(view: View) {
