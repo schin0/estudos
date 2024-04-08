@@ -66,11 +66,27 @@
         android:text="Compartilhar" />
 
     <Button
-        android:id="@+id/btn_abrir_layout"
+        android:id="@+id/btn_abrir_constraint_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_gravity="center"
-        android:text="Abrir layouts" />
+        android:text="Abrir ConstraintLayout" />
+
+    <Button
+        android:id="@+id/btn_abrir_table_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center"
+        android:text="Abrir TableLayout" />
+
+    <Button
+        android:id="@+id/btn_abrir_projeto_pomar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center"
+        android:text="Abrir Projeto Pomar" />
 
 </LinearLayout>
