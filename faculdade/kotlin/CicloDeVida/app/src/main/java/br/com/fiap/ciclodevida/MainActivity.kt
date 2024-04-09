@@ -60,6 +60,27 @@ class MainActivity : ComponentActivity() {
             i.type = "text/plain";
             startActivity(i);
         }
+
+        val btnAbrirConstraintLayout = findViewById<Button>(R.id.btn_abrir_constraint_layout);
+
+        btnAbrirConstraintLayout.setOnClickListener {
+            val i = Intent(this, Layouts::class.java);
+            startActivity(i);
+        }
+
+        val btnAbrirTableLayout = findViewById<Button>(R.id.btn_abrir_table_layout);
+
+        btnAbrirTableLayout.setOnClickListener {
+            val i = Intent(this, TableLayout::class.java);
+            startActivity(i);
+        }
+
+        val btnAbrirProjetoPomar = findViewById<Button>(R.id.btn_abrir_projeto_pomar);
+
+        btnAbrirProjetoPomar.setOnClickListener {
+            val i = Intent(this, ProjetoPomar::class.java);
+            startActivity(i);
+        }
     }
 
     fun preencherTexto(view: View) {
