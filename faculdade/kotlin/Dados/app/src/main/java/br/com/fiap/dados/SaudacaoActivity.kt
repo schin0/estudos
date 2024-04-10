@@ -1,5 +1,6 @@
 package br.com.fiap.dados
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -20,10 +21,11 @@ class SaudacaoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_saudacao);
 
         val txvSaudacao = findViewById<TextView>(R.id.txv_saudacao);
+        var db = DatabaseManager(this,"saudacoes")
+
         // obterDadosComSharedPreferences(txvSaudacao);
-        obterDadosComArquivo(txvSaudacao);
-
-
+        // obterDadosComArquivo(txvSaudacao);
+        obterDadosComSQLite(db, txvSaudacao);
     }
 
     private fun obterDadosComSharedPreferences(txvSaudacao: TextView) {
@@ -68,4 +70,25 @@ class SaudacaoActivity : AppCompatActivity() {
             return "";
         }
     }
+
+    @SuppressLint("Range")
+    private fun obterDadosComSQLite(db: DatabaseManager, txvSaudacao: TextView) {
+        var cursor = db.listarSaudacao();
+
+        var nome = ""
+        var tratamento = ""
+
+        if(cursor.count > 0){
+            cursor.moveToFirst()
+
+            nome = cursor.getString(cursor.getColumnIndex("NOME"))
+            tratamento = cursor.getString(cursor.getColumnIndex("TRATAMENTO"))
+        }
+
+        if (tratamento.equals("Sem tratamento"))
+            txvSaudacao.text = nome;
+        else
+            txvSaudacao.text = tratamento + " " + nome;
+    }
 }
+

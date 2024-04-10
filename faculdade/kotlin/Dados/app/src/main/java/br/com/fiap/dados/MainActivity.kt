@@ -31,10 +31,14 @@ class MainActivity : ComponentActivity() {
         val txtNome = findViewById<EditText>(R.id.txtNome);
         val listTratamento = findViewById<Spinner>(R.id.listTratamento);
 
+        var db = DatabaseManager(this,"saudacoes");
+
         btnSalvar.setOnClickListener {
             // salvarSaudacaoComSharedPreferences(txtNome.editableText.toString(), listTratamento.selectedItem.toString());
 
-            salvarSaudacaoComArquivo(txtNome.editableText.toString(), listTratamento.selectedItem.toString());
+            // salvarSaudacaoComArquivo(txtNome.editableText.toString(), listTratamento.selectedItem.toString());
+
+            salvarSaudacaoComSQLite(db, txtNome.editableText.toString(), listTratamento.selectedItem.toString());
 
             Toast.makeText(this, "Saudação gravada com sucesso!", Toast.LENGTH_SHORT).show();
         }
@@ -78,4 +82,10 @@ class MainActivity : ComponentActivity() {
             Log.i("gravarDadosDoArquivo", "Arquivo foi encontrado, mas os dados não puderam ser gravados!");
         }
     }
+
+    private fun salvarSaudacaoComSQLite(db: DatabaseManager, nome: String, tratamento: String) {
+        db.removerSaudacao();
+        db.inserirSaudacao(1, nome, tratamento);
+    }
 }
+
