@@ -15,4 +15,14 @@
         android:layout_gravity="start"
         />
 
+    <Button
+        android:id="@+id/btn_localizacao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Localização Atual"
+        android:onClick="acessarLocalizacaoDoUsuario"
+        android:textAllCaps="false"
+        android:layout_gravity="start"
+        />
+
 </LinearLayout>

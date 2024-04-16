@@ -92,8 +92,6 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
             override fun getInfoWindow(p0: Marker): View? {
                 TODO("Not yet implemented")
             }
-
-
         });
     }
 

@@ -24,5 +24,10 @@ class MainActivity : ComponentActivity() {
         val intent = Intent(this, MapaActivity::class.java);
         startActivity(intent);
     }
+
+    fun acessarLocalizacaoDoUsuario(view: View) {
+        val intent = Intent(this, LocalizacaoUsuarioActivity::class.java);
+        startActivity(intent);
+    }
 }
 
