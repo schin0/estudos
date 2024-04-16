@@ -69,11 +69,7 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
 
         // Configurar a exibição dos títulos e endereços das unidades:
         googleMap.setInfoWindowAdapter(object: GoogleMap.InfoWindowAdapter {
-            override fun getInfoWindow(arg0: Marker?): View? {
-                return null;
-            }
-
-            override fun getInfoContents(marker: Marker): View {
+            override fun getInfoContents(marker: Marker): View? {
                 val info = LinearLayout(applicationContext);
                 info.orientation = LinearLayout.VERTICAL;
 
@@ -91,6 +87,10 @@ class MapaActivity : AppCompatActivity(), OnMapReadyCallback {
                 info.addView(snippet);
 
                 return info;
+            }
+
+            override fun getInfoWindow(p0: Marker): View? {
+                TODO("Not yet implemented")
             }
 
 
