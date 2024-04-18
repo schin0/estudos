@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">DesignLayout</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_products">Produtos</string>
+    <string name="title_about">Sobre</string>
+    <string name="title_nova_secao">Nova seção</string>
+</resources>
