@@ -24,8 +24,10 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
 
 class LocalizacaoUsuarioActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener,
     LocationListener, OnMapReadyCallback
@@ -101,16 +103,16 @@ class LocalizacaoUsuarioActivity : AppCompatActivity(), GoogleApiClient.Connecti
         TODO("Not yet implemented")
     }
 
-    override fun onMapReady(p0: GoogleMap) {
-        TODO("Not yet implemented")
+    override fun onMapReady(map: GoogleMap) {
+        updateMap(map, null);
     }
 
     override fun onLocationChanged(p0: Location) {
         TODO("Not yet implemented")
     }
 
-    fun checkLocation() {
-
+    fun checkLocation() : Boolean {
+        return isLocationEnabled;
     }
 
     fun startLocationUpdates() {
@@ -137,16 +139,27 @@ class LocalizacaoUsuarioActivity : AppCompatActivity(), GoogleApiClient.Connecti
         }
     }
 
-    fun updateMap(googleMap: GoogleMap, latLng: LatLng) {
+    fun updateMap(googleMap: GoogleMap, latLng: LatLng?) {
         mapa = googleMap;
 
         var meuTitulo = "FIAP Campus Vila Mariana";
         var meuSnippet = "Av. Lins de Vasconcelos,1264\nSão Paulo - SP\nCEP: 01538-001";
         var localizacao = LatLng(-23.5746685, - 46.6232043);
 
+        if (latLng != null) {
+            localizacao = latLng;
+            meuTitulo = "Localização capturada";
+            meuSnippet = "Veja os detalhes\nda sua localização";
+        }
+
         var bitmap = arrayOf(0.0F, 30.0F, 60.0F, 120.0F, 180.0F, 210.0F, 240.0F ,270.0F, 300.0F, 330.0F);
 
         var bitmapSorted = bitmap[((Math.random() * bitmap.size).toInt())];
+
+        mapa.addMarker(
+            MarkerOptions().position(localizacao).title(meuTitulo).snippet(meuSnippet)
+                .icon(BitmapDescriptorFactory.defaultMarker(bitmapSorted))
+        )
 
         mapa.moveCamera(
             CameraUpdateFactory.newLatLngZoom(localizacao, 12.5F)
