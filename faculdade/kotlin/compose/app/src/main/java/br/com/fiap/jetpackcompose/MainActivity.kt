@@ -1,6 +1,7 @@
 package br.com.fiap.jetpackcompose
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
@@ -22,6 +23,8 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -52,6 +55,14 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun CriarPrimeiroComponente() {
+    var idade = remember {
+        mutableStateOf(0)
+    }
+
+    var textoIdade = remember {
+        mutableStateOf("")
+    }
+
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
@@ -68,14 +79,21 @@ fun CriarPrimeiroComponente() {
         )
         Spacer(modifier = Modifier.height(32.dp))
         Text(
-            text = "20",
+            text = "${idade.value}",
             fontSize = 48.sp,
             fontWeight = FontWeight.Bold
         )
         Spacer(modifier = Modifier.height(32.dp))
-        Row () {
+        Row (horizontalArrangement = Arrangement.SpaceEvenly, modifier = Modifier.fillMaxWidth()) {
             Button(
-                onClick = {},
+                onClick = {
+                    idade.value--;
+
+                    if (idade.value < 0)
+                        idade.value = 0;
+
+                    textoIdade.value = ObterTextoIdade(idade.value);
+                  },
                 modifier = Modifier.size(84.dp),
                 shape = RoundedCornerShape(8.dp),
                 colors = ButtonDefaults.buttonColors(Color(0XFFAD1F4E))
@@ -85,9 +103,15 @@ fun CriarPrimeiroComponente() {
                     fontSize = 40.sp
                 )
             }
-            Spacer(modifier = Modifier.width(32.dp))
             Button(
-                onClick = {},
+                onClick = {
+                    idade.value++;
+                    
+                    if (idade.value > 130)
+                        idade.value = 130;
+
+                    textoIdade.value = ObterTextoIdade(idade.value);
+                },
                 modifier = Modifier.size(84.dp),
                 shape = RoundedCornerShape(8.dp),
                 colors = ButtonDefaults.buttonColors(Color(0XFFAD1F4E))
@@ -98,7 +122,16 @@ fun CriarPrimeiroComponente() {
                 )
             }
         }
+        Spacer(modifier = Modifier.height(32.dp))
+        ObterTextoIdade(textoIdade.value)
     }
+}
+
+fun ObterTextoIdade(idade: Int): String {
+    if (idade >= 18)
+        return "Você é MAIOR de idade!";
+
+    return "Você é MENOR de idade!";
 }
 
 @Preview(showBackground = true, showSystemUi = true)
@@ -106,6 +139,23 @@ fun CriarPrimeiroComponente() {
 fun CriarPrimeiroComponentePreview() {
     JetpackComposeTheme {
         CriarPrimeiroComponente()
+    }
+}
+
+@Composable
+fun ObterTextoIdade(texto: String) {
+    Column(verticalArrangement = Arrangement.Center) {
+        Row {
+            Text(text = texto)
+        }
+    }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun GreetingPreview() {
+    JetpackComposeTheme {
+        ObterTextoIdade("teste")
     }
 }
 
