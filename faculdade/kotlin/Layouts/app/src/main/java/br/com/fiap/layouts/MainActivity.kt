@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -36,7 +37,10 @@ class MainActivity : ComponentActivity() {
                             text = "Teste",
                             modifier = Modifier.align(Alignment.BottomCenter)
                         )
-                        Button(onClick = {}) {
+                        Button(
+                            onClick = {},
+                            modifier = Modifier.offset(20.dp, -(30).dp)
+                        ) {
                             Text(text = "Clique aqui")
                         }
                     }
