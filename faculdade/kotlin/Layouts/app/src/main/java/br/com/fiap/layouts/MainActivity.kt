@@ -106,10 +106,14 @@ fun IMCScreen() {
         mutableStateOf(0.0)
     }
 
+    var statusImc by remember {
+        mutableStateOf("")
+    }
+
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
-        Column (
+        Column(
             modifier = Modifier.fillMaxWidth()
         ) {
             // Header
@@ -219,6 +223,8 @@ fun IMCScreen() {
                         Button(
                             onClick = {
                                 imc = calcularImc(peso.toDouble(), altura.toDouble())
+
+                                statusImc = obterStatusImc(imc);
                             },
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -259,7 +265,7 @@ fun IMCScreen() {
                             fontSize = 14.sp
                         )
                         Text(
-                            text = "Peso Ideal.",
+                            text = statusImc,
                             fontWeight = FontWeight.Bold,
                             color = Color.White,
                             fontSize = 20.sp
@@ -293,7 +299,7 @@ fun LayoutScreen() {
         Button(onClick = { /*TODO*/ }) {
             Text(text = "Botão 3")
         }
-        Column (
+        Column(
             verticalArrangement = Arrangement.SpaceEvenly,
             modifier = Modifier
                 .background(Color.Gray)
@@ -303,7 +309,7 @@ fun LayoutScreen() {
             Text(text = "Hernandes")
             Text(text = "Schincariol")
 
-            Row (
+            Row(
                 verticalAlignment = Alignment.Bottom,
                 modifier = Modifier
                     .background(Color.Green)
@@ -336,12 +342,12 @@ fun LayoutScreen() {
                 }
             }
 
-            Row (
+            Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier
                     .background(Color.Yellow)
                     .fillMaxWidth()
-                ) {
+            ) {
                 Button(onClick = { /*TODO*/ }) {
                     Text(text = "Botão 11")
                 }
