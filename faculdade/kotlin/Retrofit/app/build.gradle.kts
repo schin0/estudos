@@ -44,7 +44,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
 
     implementation(libs.retrofit)
-    implementation(libs.converter.gscon)
+    implementation(libs.converter.gson)
     implementation(libs.gson)
 
     testImplementation(libs.junit)
