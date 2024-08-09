@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:todo_banco/taskModel.dart';
+import 'package:todo_banco/taskModel_nosql.dart';
 
-import 'dataBaseManager.dart';
+import 'appDatabase.dart';
 import 'login.dart';
 
-//1
 enum Status { openDb, readingTasks, done }
 
 class TasksPage extends StatefulWidget {
@@ -15,12 +14,13 @@ class TasksPage extends StatefulWidget {
 }
 
 class _TasksPageState extends State<TasksPage> {
-  //2
-  DatabaseManager dbMgr = DatabaseManager();
+  // DatabaseManager dbMgr = DatabaseManager();
+  late AppDatabase database;
+  late List<TaskNoSQL> tasks;
 
-  //1
   Status status = Status.openDb;
-  late List<Task> tasks;
+
+  // late List<Task> tasks;
   final myController = TextEditingController();
 
   @override
@@ -28,7 +28,7 @@ class _TasksPageState extends State<TasksPage> {
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: SystemUiOverlay.values);
-    //2
+
     _init();
   }
 
@@ -38,36 +38,44 @@ class _TasksPageState extends State<TasksPage> {
     super.dispose();
   }
 
-  //2
   void _init() async {
-    await dbMgr.createDatabase();
-    setState(() {
-      status = Status.readingTasks;
-    });
+    // await dbMgr.createDatabase();
+    // setState(() {
+    //   status = Status.readingTasks;
+    // });
+    database =
+        await $FloorAppDatabase.databaseBuilder('tasks_nosql.db').build();
+
     _readTasks();
   }
 
-  //3
   void _readTasks() {
-    dbMgr.tasks().then((list) {
+    database.tasksDAO.findAllTasks().then((list) {
       setState(() {
         tasks = list;
         status = Status.done;
       });
     });
+
+    // dbMgr.tasks().then((list) {
+    //   setState(() {
+    //     tasks = list;
+    //     status = Status.done;
+    //   });
+    // });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tasks"),
+        title: const Text("Tasks"),
         actions: <Widget>[
           IconButton(
             onPressed: () {
               _logout();
             },
-            icon: Icon(Icons.exit_to_app),
+            icon: const Icon(Icons.exit_to_app),
           )
         ],
       ),
@@ -99,18 +107,28 @@ class _TasksPageState extends State<TasksPage> {
                 //2
                 onChanged: (bool? value) {
                   tasks[index].finish = tasks[index].finish == 1 ? 0 : 1;
-                  dbMgr.update(tasks[index]).then((value) {
+                  database.tasksDAO.updateTask(tasks[index]).then((value) {
                     myController.clear();
                     _readTasks();
                   });
+
+                  // dbMgr.update(tasks[index]).then((value) {
+                  //   myController.clear();
+                  //   _readTasks();
+                  // });
                 },
                 //3
                 secondary: InkWell(
                   onTap: () {
-                    dbMgr.delete(tasks[index].id ?? 0).then((value) {
+                    database.tasksDAO.deleteTask(tasks[index]).then((value) {
                       myController.clear();
                       _readTasks();
                     });
+
+                    // dbMgr.delete(tasks[index].id ?? 0).then((value) {
+                    //   myController.clear();
+                    //   _readTasks();
+                    // });
                   },
                   child: const Icon(Icons.delete, color: Colors.red),
                 ),
@@ -135,11 +153,17 @@ class _TasksPageState extends State<TasksPage> {
               ),
               InkWell(
                 onTap: () {
-                  Task task = Task(desc: myController.text, finish: 0);
-                  dbMgr.insert(task).then((value) {
+                  TaskNoSQL task =
+                      TaskNoSQL(desc: myController.text, finish: 0);
+
+                  database.tasksDAO.insertTask(task).then((value) {
                     myController.clear();
                     _readTasks();
                   });
+                  // dbMgr.insert(task).then((value) {
+                  //   myController.clear();
+                  //   _readTasks();
+                  // });
                 },
                 child: const Padding(
                   padding: EdgeInsets.all(10),
@@ -153,7 +177,6 @@ class _TasksPageState extends State<TasksPage> {
     );
   }
 
-  //4
   _logout() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool('login', false).then((value) {
